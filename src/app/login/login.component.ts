@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    sessionStorage.setItem('token', '');
+    sessionStorage.removeItem('token');
     this.form = this.formBuilder.group({
       login: ['', Validators.required],
       password: ['', Validators.required],
@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
           this.form.controls['password'].value
       )
     );
-    //TODO gravar login e senha na sessão.
     this.router.navigateByUrl('/home');
   }
 }

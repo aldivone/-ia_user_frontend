@@ -1,5 +1,5 @@
 interface User {
-  id: number;
+  id?: number;
 
   name: string;
 
@@ -7,9 +7,9 @@ interface User {
 
   password: string;
 
-  dateCreated: Date;
+  createdDate?: Date;
 
-  dateUpdated: Date;
+  updatedDate?: Date;
 
   email: string;
 

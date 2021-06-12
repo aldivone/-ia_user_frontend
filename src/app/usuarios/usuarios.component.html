@@ -305,13 +305,15 @@
                 <th id="email">Email</th>
                 <th id="admin">Administrador</th>
                 <th id="dataCreated">Criado em</th>
+                <th id='btn'></th>
             </tr>
             <tr *ngFor="let user of usuarios">
                 <td>{{user.name}}</td>
                 <td>{{user.login}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.admin ? 'Sim':'Não'}}</td>
-                <td>{{user.dateCreated}}</td>
+                <td>{{user.createdDate | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td><button (click)="alterar(user)">alterar</button></td>
             </tr>
         </table>
 

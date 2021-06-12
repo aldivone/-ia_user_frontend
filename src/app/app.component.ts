@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(router: Router) {
     const token = sessionStorage.getItem('token');
+    console.log('token ====> ', token)
     if (token === null) {
       router.navigateByUrl('/login');
     }
