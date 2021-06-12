@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'usuario-app';
+  constructor(router: Router) {
+    const token = sessionStorage.getItem('token');
+    if (token === null) {
+      router.navigateByUrl('/login');
+    }
+  }
 }
