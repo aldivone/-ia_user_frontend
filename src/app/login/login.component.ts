@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    const message = await this.loginApi
+    const user = await this.loginApi
       .login(
         this.form.controls['login'].value,
         this.form.controls['password'].value
       )
       .toPromise();
-    console.log(message);
+    sessionStorage.setItem('user', JSON.stringify(user));
     sessionStorage.setItem(
       'token',
       btoa(

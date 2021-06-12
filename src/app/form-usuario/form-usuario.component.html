@@ -273,7 +273,7 @@
     </svg>
 
     <span style="color: #000;">Cadastros de usuários</span>
-    <span><a routerLink="/usuarios" routerLinkActive="active">Voltar</a></span>
+    <span><a style="font-weight: bold; color: #000;" routerLink="/usuarios" routerLinkActive="active">Voltar</a></span>
   </div>
 
 </div>
@@ -298,7 +298,7 @@
         <div *ngIf="f.login.errors.required">Preencha o login</div>
       </div>
 
-      <input type="password" formControlName="password" placeholder="Senha" class="form-control"
+      <input type="password" formControlName="password" placeholder="Senha" class="form-control"  [hidden]="!exibir"
         [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
         <div *ngIf="f.password.errors.required">Preencha a senha</div>
