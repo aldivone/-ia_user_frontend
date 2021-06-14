@@ -104,7 +104,6 @@ export class FormUsuarioComponent implements OnInit {
       }
       this.router.navigateByUrl('/usuarios');
     } catch (exception) {
-      console.log('errror ====>  ', exception);
       if (exception && exception.status && exception.status === 422) {
         alert(exception.error.mensagem);
       } else {

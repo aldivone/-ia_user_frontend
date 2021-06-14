@@ -31,25 +31,35 @@ export class LoginComponent implements OnInit {
   }
 
   async acessar(): Promise<void> {
-    this.submitted = true;
-    if (this.form.invalid) {
-      return;
-    }
-    const user = await this.loginApi
-      .login(
-        this.form.controls['login'].value,
-        this.form.controls['password'].value
-      )
-      .toPromise();
-    sessionStorage.setItem('user', JSON.stringify(user));
-    sessionStorage.setItem(
-      'token',
-      btoa(
-        this.form.controls['login'].value +
-          ':' +
+    try {
+      this.submitted = true;
+      if (this.form.invalid) {
+        return;
+      }
+      const user = await this.loginApi
+        .login(
+          this.form.controls['login'].value,
           this.form.controls['password'].value
-      )
-    );
-    this.router.navigateByUrl('/home');
+        )
+        .toPromise();
+      sessionStorage.setItem('user', JSON.stringify(user));
+      sessionStorage.setItem(
+        'token',
+        btoa(
+          this.form.controls['login'].value +
+            ':' +
+            this.form.controls['password'].value
+        )
+      );
+      this.router.navigateByUrl('/home');
+    } catch (exception) {
+      if (exception && exception.status && exception.status === 401) {
+        alert('Usuário ou senha inválidos, tente novamente!');
+      } else {
+        alert(
+          'Infelizmente não conseguimos processar sua solicitação, tentar novamente!'
+        );
+      }
+    }
   }
 }
